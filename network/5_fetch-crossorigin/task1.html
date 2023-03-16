@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<style>
+			h1 {
+				text-align: center;
+			}
+		</style>
+		<title>Почему нам нужен Origin?</title>
+	</head>
+	<body>
+		<script>
+			'use strict';
+			/**
+			 * Как вы, вероятно, знаете, существует HTTP-заголовок Referer,
+			 * который обычно содержит адрес страницы, инициировавшей сетевой запрос.
+			 * Например, при запросе (fetch) http://google.com с
+			 * http://javascript.info/some/url заголовки выглядят так:
+			 *
+			 * Accept: *
+			 * Accept-Charset: utf-8
+			 * Accept-Encoding: gzip,deflate,sdch
+			 * Connection: keep-alive
+			 * Host: google.com
+			 * Origin: http://javascript.info
+			 * Referer: http://javascript.info/some/url
+			 * Как вы можете видеть, присутствуют и Referer, и Origin.
+			 * Вопросы:
+			 * 1. Почему нужен Origin, если Referer содержит даже больше информации?
+			 * 2. Возможно ли отсутствие Referer или Origin, или это неправильно?
+			 *
+			 * Ответ:
+			 * 1.Нам нужен Origin, потому что иногда Referer отсутствует.
+			 * Например, при fetch запросе HTTP-страницы с HTTPS, Referer нет.
+			 * Content Security Policy (политика безопасности содержимого) может
+			 * запретить отправление Referer. Согласно спецификации, Referer является
+			 * необязательным HTTP-заголовком. Именно потому что Referer ненадёжен,
+			 * был изобретён Origin. Браузер гарантирует наличие правильного Origin
+			 * при запросах на другой источник.
+			 * 2. Да, возможно
+			 */
+		</script>
+	</body>
+</html>

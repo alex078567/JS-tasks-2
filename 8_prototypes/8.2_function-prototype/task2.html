@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<title>Создайте новый объект с помощью уже существующего</title>
+	</head>
+	<body>
+		<script>
+			'use strict';
+
+			/**
+			 *
+			 * Пример, где вызов корректно работает
+			 *
+			 */
+			function ObjectCreator(name) {
+				this.name = name;
+				this.print = function () {
+					alert(this.name);
+				};
+			}
+
+			const obj1 = new ObjectCreator('new');
+
+			alert(obj1.name);
+			const obj2 = new obj1.constructor('new 2');
+			alert(obj2.name);
+			/**
+			 *
+			 * Теперь изменим свойство prototype в функции-конструкторе
+			 *
+			 * Пример ведет себя не правильно
+			 */
+
+			ObjectCreator.prototype = {
+				name: 'name',
+			};
+
+			const obj3 = new ObjectCreator('new 3');
+			const obj4 = new obj3.constructor('new 3');
+
+			alert(obj3.name);
+			alert(obj4.name);
+		</script>
+	</body>
+</html>

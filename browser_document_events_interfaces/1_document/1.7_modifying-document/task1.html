@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<title>createTextNode vs innerHTML vs textContent</title>
+	</head>
+	<body>
+		<div id="elem1"></div>
+		<div id="elem2"></div>
+		<div id="elem3"></div>
+		<script>
+			'use strict';
+
+			const text = '<h2>Это заголовок</h2>';
+			elem1.append(document.createTextNode(text));
+			elem2.innerHTML = text;
+			elem3.textContent = text;
+
+			/**
+			 * Какие из этих 3-х команд работают одинаково?
+			 * Ответ: одинаково работают 1 и 3-я команды
+			 * они добавляют значение переменной text как текст
+			 */
+		</script>
+	</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<title>Какой обработчик запустится?</title>
+	</head>
+	<body>
+		<button class="button" type="button">Нажмите</button>
+
+		<script>
+			'use strict';
+
+			const button = document.querySelector('.button');
+			button.addEventListener('click', () => alert('1'));
+
+			button.removeEventListener('click', () => alert('1'));
+
+			button.onclick = () => alert(2);
+
+			/**
+			 * В переменной button находится кнопка.
+			 * Изначально на ней нет обработчиков.
+			 * Который из обработчиков запустится?
+			 * Что будет выведено при клике после выполнения кода?
+			 *
+			 * Ответ: запустятся оба обработчика. Так как button.removeEventListener
+			 * не сможет удалить первый обработчик. Поскольку в него передана не та же самая
+			 * функция, что и в первый обработчик.
+			 *
+			 */
+		</script>
+	</body>
+</html>

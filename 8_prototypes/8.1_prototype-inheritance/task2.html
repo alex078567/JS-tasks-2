@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<title>Алгоритм поиска</title>
+	</head>
+	<body>
+		<script>
+			'use strict';
+
+			let head = {
+				glasses: 1,
+			};
+
+			let table = {
+				pen: 3,
+				__proto__: head,
+			};
+
+			let bed = {
+				sheet: 1,
+				pillow: 2,
+				__proto__: table,
+			};
+
+			let pockets = {
+				money: 2000,
+				__proto__: bed,
+			};
+
+			alert(pockets.pen); // 3
+			alert(bed.glasses); // 1
+			alert(table.money); // undefined
+
+			/**
+			 * Ответьте на вопрос: как быстрее получить значение
+			 * glasses – через pockets.glasses или через head.glasses?
+			 * При необходимости составьте цепочки поиска и сравните их.
+			 *
+			 * Для современных движков, неважно откудо берется свойство.
+			 * Они запоминают, где было найдено свойство и повторно ищут
+			 * его там-же.
+			 */
+		</script>
+	</body>
+</html>

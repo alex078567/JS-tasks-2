@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<title>Очистите элемент</title>
+	</head>
+	<body>
+		<ol id="elem">
+			<li>Привет</li>
+			<li>Мир</li>
+		</ol>
+		<script>
+			'use strict';
+
+			// очищает список через 2 секунды
+			setTimeout(
+				(elem) => {
+					clear(elem);
+				},
+				2000,
+				elem
+			);
+
+			// функция для очистки списка
+			function clear(elem) {
+				elem.innerHTML = '';
+			}
+		</script>
+	</body>
+</html>

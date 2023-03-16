@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<title>Тег в комментарии</title>
+	</head>
+	<body>
+		<script>
+			'use strict';
+
+			let body = document.body;
+
+			body.innerHTML = '<!--' + body.tagName + '-->';
+
+			alert(body.firstChild.data); // что выведет?
+
+			/**
+			 * Вывод: BODY
+			 * Так как body.tagName = BODY => <!--BODY-->.
+			 * Этот комментарий, первый потомок body и его значение
+			 * data = 'BODY'
+			 *
+			 */
+		</script>
+	</body>
+</html>

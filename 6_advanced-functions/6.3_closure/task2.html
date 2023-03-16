@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<title>Объект счётчика</title>
+	</head>
+	<body>
+		<script>
+			'use strict';
+			/**
+			 * Здесь объект счётчика создан с помощью функции-конструктора.
+			 * Будет ли он работать? Что покажет?
+			 *
+			 */
+
+			function Counter() {
+				let count = 0;
+
+				this.up = function () {
+					return ++count;
+				};
+				this.down = function () {
+					return --count;
+				};
+			}
+
+			let counter = new Counter();
+
+			alert(counter.up()); // 1
+			alert(counter.up()); // 2
+			alert(counter.down()); // 1
+
+			/**
+			 * Обе вложенные функции созданы с одним и тем же
+			 * внешним лексическим окружением. Они имеют доступ к одной и
+			 * той же переменной count. Все будет работать
+			 *
+			 */
+		</script>
+	</body>
+</html>

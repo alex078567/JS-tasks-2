@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<title>Создайте дерево из объекта</title>
+	</head>
+	<body>
+		<h2>Используя свойство innerHTML</h2>
+		<section id="containerInnerHtml"></section>
+		<h2>Используя методы DOM</h2>
+		<section id="containerDOM"></section>
+		<script>
+			'use strict';
+
+			let data = {
+				Рыбы: {
+					форель: {},
+					лосось: {},
+				},
+
+				Деревья: {
+					Огромные: {
+						секвойя: {},
+						дуб: {},
+					},
+					Цветковые: {
+						яблоня: {},
+						магнолия: {},
+					},
+				},
+			};
+
+			createTreeInnerHTML(containerInnerHtml, data);
+			createTreeDomMethods(containerDOM, data);
+
+			function createTreeInnerHTML(container, obj) {
+				container.innerHTML = createTreeText(obj);
+			}
+
+			function createTreeDomMethods(container, obj) {
+				container.append(createTreeDom(obj));
+			}
+
+			/**
+			 * Функция для создания вложенного списка с использованием
+			 * присваивания в свойство innerHTML
+			 */
+			function createTreeText(obj) {
+				let listItem = '';
+				let list = '';
+
+				for (let key in obj) {
+					listItem += '<li>' + key + createTreeText(obj[key]) + '</li>';
+				}
+
+				if (listItem) {
+					list = '<ul>' + listItem + '</ul>';
+				}
+
+				return list;
+			}
+
+			/**
+			 * Функция для создания вложенного списка с использованием
+			 * методов DOM
+			 */
+			function createTreeDom(obj) {
+				if (!Object.keys(obj).length) return;
+
+				const list = document.createElement('ul');
+
+				for (let key in obj) {
+					const listItem = document.createElement('li');
+					listItem.innerHTML = key;
+					let childrenUl = createTreeDom(obj[key]);
+
+					if (childrenUl) {
+						listItem.append(childrenUl);
+					}
+
+					list.append(listItem);
+				}
+
+				return list;
+			}
+		</script>
+	</body>
+</html>

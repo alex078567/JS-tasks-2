@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+
+		<title>Поиск элементов</title>
+	</head>
+	<body>
+		<form name="search">
+			<label
+				>Search the site:
+				<input type="text" name="search" />
+			</label>
+			<input type="submit" value="Search!" />
+		</form>
+
+		<hr />
+
+		<form name="search-person">
+			Search the visitors:
+			<table id="age-table">
+				<tr>
+					<td>Age:</td>
+					<td id="age-list">
+						<label>
+							<input type="radio" name="age" value="young" />less than 18</label
+						>
+						<label>
+							<input type="radio" name="age" value="mature" />18-50</label
+						>
+						<label>
+							<input type="radio" name="age" value="senior" />more than
+							50</label
+						>
+					</td>
+				</tr>
+
+				<tr>
+					<td>Additionally:</td>
+					<td>
+						<input type="text" name="info[0]" />
+						<input type="text" name="info[1]" />
+						<input type="text" name="info[2]" />
+					</td>
+				</tr>
+			</table>
+
+			<input type="submit" value="Search!" />
+		</form>
+		<script>
+			'use strict';
+
+			console.log('!!!Таблица с `id="age-table"`.');
+			// 1. Таблица с `id="age-table"`.
+			const table = document.getElementById('age-table');
+			console.log(table);
+
+			console.log('!!!Все label в этой таблице');
+			// 2. Все label в этой таблице
+			let labels = table.getElementsByTagName('label');
+			console.log(labels);
+			// 2 вариант
+			labels = document.querySelectorAll('#age-table label');
+			console.log(labels);
+
+			console.log('!!!Первый td в этой таблице');
+			// 3. Первый td в этой таблице
+			let tableCell = table.rows[0].cells[0];
+			console.log(tableCell);
+			// 2 вариант
+			tableCell = table.getElementsByTagName('td')[0];
+			console.log(tableCell);
+			// 3 вариант
+			tableCell = table.querySelector('td');
+			console.log(tableCell);
+
+			console.log('!!!Форма с name="search"');
+			// 4. Форма с name="search"
+			let form = document.getElementsByName('search')[0];
+			console.log(form);
+			// 2 вариант
+			form = document.querySelector('form[name="search"]');
+			console.log(form);
+
+			console.log('!!!Первый input в этой форме');
+			// 5. Первый input в этой форме
+			let input = form.getElementsByTagName('input')[0];
+			console.log(input);
+			// 2 вариант
+			input = form.querySelector('input');
+			console.log(input);
+
+			console.log('!!!Последний input в этой форме');
+			// 6. Последний input в этой форме
+			let inputs = form.querySelectorAll('input'); // найти все input
+			let lastInput = inputs[inputs.length - 1]; // взять последний
+			console.log(lastInput);
+			// 2 вариант
+			inputs = form.getElementsByTagName('input'); // найти все input
+			lastInput = inputs[inputs.length - 1]; // взять последний
+			console.log(lastInput);
+		</script>
+	</body>
+</html>

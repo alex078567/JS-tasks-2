@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<style>
+			h1 {
+				text-align: center;
+			}
+		</style>
+		<title>Получите данные о пользователях GitHub</title>
+	</head>
+	<body>
+		<h1>Результаты в консоли &darr;</h1>
+		<script>
+			'use strict';
+			const names = ['john-smilga', 'jonasschmedtmann', 'freeCodeCamp'];
+
+			getUsers(names);
+			async function getUsers(names) {
+				let jobs = [];
+				for (const name of names) {
+					const job = fetch(`https://api.github.com/users/${name}`).then(
+						(successResponse) => {
+							if (successResponse.status != 200) {
+								return null;
+							} else {
+								return successResponse.json();
+							}
+						},
+						(failResponse) => {
+							return null;
+						}
+					);
+					jobs.push(job);
+				}
+
+				const results = await Promise.all(jobs);
+
+				console.log(results);
+			}
+		</script>
+	</body>
+</html>

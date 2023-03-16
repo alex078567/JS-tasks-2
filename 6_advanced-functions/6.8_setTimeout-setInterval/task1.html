@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<title>Вывод каждую секунду</title>
+	</head>
+	<body>
+		<script>
+			'use strict';
+
+			printNumbersInterval(0, 10);
+
+			/**
+			 * Сделайте два варианта решения.
+			 *
+			 */
+
+			// Используя setInterval
+
+			function printNumbersInterval(from, to) {
+				let current = from;
+				const timerId = setInterval(() => {
+					alert(current);
+					if (current === to) {
+						clearInterval(timerId);
+					}
+					current++;
+				}, 1000);
+			}
+
+			// Используя рекурсивный setTimeout
+
+			function printNumbersTimeout(from, to) {
+				let current = from;
+				const timerId = setTimeout(function add() {
+					alert(current);
+					if (current < to) {
+						setTimeout(add, 1000);
+					}
+					current++;
+				}, 1000);
+			}
+		</script>
+	</body>
+</html>

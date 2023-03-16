@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<title>Где в DOM-иерархии "document"?</title>
+	</head>
+	<body>
+		<script>
+			'use strict';
+
+			// выясняем класс обьекта document
+			alert(document);
+			// HTMLDocument
+
+			// выясняем его место в иерархии
+			let elem = document;
+			do {
+				alert(elem.__proto__);
+				elem = elem.__proto__;
+			} while (elem.__proto__);
+			// таким образом, цепочка наследования:
+			// HTMLDocument -> Document -> Node -> EventTarget -> Object
+		</script>
+	</body>
+</html>

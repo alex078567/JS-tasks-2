@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<title>Выведите список потомков в дереве</title>
+	</head>
+	<body>
+		<ul>
+			<li>
+				Животные
+				<ul>
+					<li>
+						Млекопитающие
+						<ul>
+							<li>Коровы</li>
+							<li>Ослы</li>
+							<li>Собаки</li>
+							<li>Тигры</li>
+						</ul>
+					</li>
+					<li>
+						Другие
+						<ul>
+							<li>Змеи</li>
+							<li>Птицы</li>
+							<li>Ящерицы</li>
+						</ul>
+					</li>
+				</ul>
+			</li>
+			<li>
+				Рыбы
+				<ul>
+					<li>
+						Аквариумные
+						<ul>
+							<li>Гуппи</li>
+							<li>Скалярии</li>
+						</ul>
+					</li>
+					<li>
+						Морские
+						<ul>
+							<li>Морская форель</li>
+						</ul>
+					</li>
+				</ul>
+			</li>
+		</ul>
+
+		<script>
+			'use strict';
+
+			const listItems = document.querySelectorAll('li');
+
+			listItems.forEach((listItem) => {
+				const listItemDescendantsAmount =
+					listItem.querySelectorAll('li').length;
+
+				if (listItemDescendantsAmount) {
+					listItem.firstChild.data += `[${listItemDescendantsAmount}]`;
+				}
+			});
+		</script>
+	</body>
+</html>

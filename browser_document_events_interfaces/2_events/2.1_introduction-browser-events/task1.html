@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<title>Скрыть элемент по нажатию кнопки</title>
+	</head>
+	<body>
+		<input type="button" id="hider" value="Нажмите, чтобы спрятать текст" />
+
+		<div id="text">Текст</div>
+
+		<script>
+			'use strict';
+			const button = document.querySelector('#hider');
+			const text = document.querySelector('#text');
+			button.addEventListener('click', () => {
+				text.hidden = true;
+			});
+		</script>
+	</body>
+</html>

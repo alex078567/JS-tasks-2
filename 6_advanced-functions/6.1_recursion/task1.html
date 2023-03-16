@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<title>Вычислить сумму чисел до данного</title>
+	</head>
+	<body>
+		<script>
+			'use strict';
+
+			alert(sumTo(100));
+			alert(sumToRecursion(100));
+			alert(sumToFormula(100));
+
+			function sumTo(n) {
+				let sum = 0;
+				for (let i = 1; i <= n; i++) {
+					sum += i;
+				}
+				return sum;
+			}
+
+			function sumToRecursion(n) {
+				let sum = 0;
+				for (let i = 1; i <= n; i++) {
+					sum += i;
+				}
+				return sum;
+			}
+
+			function sumToFormula(n) {
+				return (n * (n + 1)) / 2;
+			}
+
+			/**
+			 * Сложность последнего алгоритма - O(1) , потому что вне
+			 * зависимости от n  цикл будет иметь фиксированное количество действий.
+			 * Сложность алгоритмов с использованием рекурсии и цикла одинаковая - O(n),
+			 * но рекурсия будет медленнее так как, она использует больше памяти и стек вызовов.
+			 * В зависимости от среды исполнения, sumTo(100000) может сработать если в этой
+			 * среде существуют оптимизации для рекурсии. Если нет то произойдет переполнение стека
+			 *
+			 *
+			 */
+		</script>
+	</body>
+</html>

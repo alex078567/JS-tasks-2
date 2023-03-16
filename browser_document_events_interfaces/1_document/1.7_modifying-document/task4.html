@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<title>Создайте список</title>
+	</head>
+	<body>
+		<script>
+			'use strict';
+
+			const list = document.createElement('ul');
+			document.body.append(list);
+
+			while (true) {
+				const userInputData = prompt('введите содержимое пункта списка', '');
+
+				if (!userInputData) {
+					break;
+				}
+				const listItem = document.createElement('li');
+				listItem.textContent = userInputData;
+				list.append(listItem);
+			}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<title>Тормозящий (throttling) декоратор</title>
+	</head>
+	<body>
+		<script>
+			'use strict';
+
+			function f(a) {
+				console.log(a);
+				alert(a);
+			}
+
+			// f1000 передаёт вызовы f максимум раз в 1000 мс
+			let f1000 = throttle(f, 1000);
+
+			f1000(1); // показывает 1
+			f1000(2); // (ограничение, 1000 мс ещё нет)
+			f1000(3); // (ограничение, 1000 мс ещё нет)
+
+			function throttle(f, ms) {
+				let isThrottled = false;
+				let args;
+				let context;
+
+				function wrapper() {
+					if (isThrottled) {
+						args = arguments;
+						context = this;
+						return;
+					}
+
+					f.apply(this, arguments);
+
+					isThrottled = true;
+
+					setTimeout(function () {
+						isThrottled = false;
+						if (args) {
+							wrapper.apply(context, args);
+							context = null;
+							args = null;
+						}
+					}, ms);
+				}
+
+				return wrapper;
+			}
+		</script>
+	</body>
+</html>

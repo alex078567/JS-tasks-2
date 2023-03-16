@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<title>Добавить функциям метод "f.defer(ms)"</title>
+	</head>
+	<body>
+		<script>
+			'use strict';
+
+			Function.prototype.defer = function (ms) {
+				setTimeout(this, ms);
+			};
+
+			function f() {
+				alert('Hello!');
+			}
+
+			f.defer(1000); // выведет "Hello!" через 1 секунду
+		</script>
+	</body>
+</html>

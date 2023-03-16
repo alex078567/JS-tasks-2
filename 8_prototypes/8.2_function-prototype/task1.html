@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<title>Изменяем "prototype"</title>
+	</head>
+	<body>
+		<script>
+			'use strict';
+
+			function Rabbit() {}
+			Rabbit.prototype = {
+				eats: true,
+			};
+
+			const rabbit = new Rabbit();
+
+			alert(rabbit.eats); // true
+
+			Rabbit.prototype = {};
+
+			alert(rabbit.eats); // true
+
+			Rabbit.prototype = {
+				eats: true,
+			};
+
+			const rabbit1 = new Rabbit();
+
+			Rabbit.prototype.eats = false;
+
+			alert(rabbit1.eats); // false
+
+			Rabbit.prototype.eats = true;
+
+			delete rabbit1.eats;
+
+			alert(rabbit1.eats); // true
+
+			delete Rabbit.prototype.eats;
+
+			alert(rabbit1.eats); // undefined
+		</script>
+	</body>
+</html>

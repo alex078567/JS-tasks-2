@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<title>Связанная функция как метод</title>
+	</head>
+	<body>
+		<script>
+			'use strict';
+
+			function f() {
+				alert(this); // ?
+			}
+
+			let user = {
+				g: f.bind(null),
+			};
+
+			user.g();
+
+			/**
+			 * Функция выведет null, так как мы задаем данной функции
+			 * контекст null с помощью bind.
+			 *
+			 */
+		</script>
+	</body>
+</html>

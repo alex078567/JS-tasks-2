@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<title>В чём отличие CSS-свойств width и clientWidth</title>
+	</head>
+	<body>
+		<script>
+			'use strict';
+
+			/**
+			 * В чём отличие между getComputedStyle(elem).width
+			 * и elem.clientWidth?
+			 *
+			 * 1) clientWidth возвращает число,
+			 * а getComputedStyle(elem).width –
+			 * строку с px на конце.
+			 *
+			 * 2) getComputedStyle не обязательно число,
+			 * он может быть равен "auto" для строчного элемента.
+			 *
+			 * 3) clientWidth включает padding, а getComputedStyle нет
+			 */
+		</script>
+	</body>
+</html>
